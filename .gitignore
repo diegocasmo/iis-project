@@ -198,3 +198,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Ignore dataset compressed and uncompressed files
+/data/*
+!/data/README.md
