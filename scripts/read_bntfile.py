@@ -15,9 +15,11 @@ def read_chars(f, length):
   chars = [x.decode('ascii') for x in data]
   return ''.join(chars)
 
+# there might be a fater way to do this where numpy infers a 1d array
+# as a n by m array but this works too, it's only 5 columns
 def read_float64s(f, nrows):
   data = []
-  # read nrows of float64 bytes at a time
+  # read `nrows` of float64 bytes at a time
   for b in iter_unpack('d' * nrows, f.read()):
     data.append(list(b))
 
