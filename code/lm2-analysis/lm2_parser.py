@@ -45,9 +45,9 @@ def get_lm2_features(file_path):
       for line in islice(file, len(defined_landmarks) + 7, None):
         landmark_values.append(line.rstrip('\n\r'))
 
-    # Fill in undefined values in landmark as -1
+    # Fill in undefined values in landmark as 'NaN'
     for idx in undefined_landmarks_idx:
-      landmark_values.insert(idx, -1)
+      landmark_values.insert(idx, 'NaN')
 
     # Must have the same number of landmark values as landmarks
     assert(len(landmark_values) == len(all_landmarks))
@@ -55,8 +55,8 @@ def get_lm2_features(file_path):
     # Unpack feature values in 'x' and 'y' coordinates
     features = []
     for value in landmark_values:
-      if value == -1:
-        features += [-1] * 2
+      if value == 'NaN':
+        features += ['NaN'] * 2
       else:
         features += map(float, value.split())
 
