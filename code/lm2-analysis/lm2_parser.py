@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.4
 # -*- coding: utf-8 -*-
 
-from constants import get_all_emotions, get_all_possible_landmarks
+from constants import get_all_emotions, get_all_landmarks
 from itertools import islice
 import glob
 import csv
@@ -35,7 +35,7 @@ def get_lm2_features(file_path):
   '''
   try:
     # Find undefined landmark values in lm2 file
-    all_landmarks = get_all_possible_landmarks()
+    all_landmarks = get_all_landmarks()
     defined_landmarks = get_defined_landmarks(file_path)
     undefined_landmarks_idx = get_undefined_landmarks_idx(all_landmarks, defined_landmarks)
 
@@ -100,7 +100,7 @@ def create_csv(features):
   Create CSV file of features
   '''
   headers = ['Label']
-  for landmark in get_all_possible_landmarks():
+  for landmark in get_all_landmarks():
     headers.append(landmark + '-x')
     headers.append(landmark + '-y')
 
