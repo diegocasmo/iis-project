@@ -11,12 +11,9 @@ def read_float64(f):
   return unpack('d', f.read(8))[0] # double (float64)
 
 def read_chars(f, length):
-  data = []
-  inc = 0
-  for b in iter_unpack('s', f.read(length)):
-    data.append(b[0].decode('ascii'))
-    inc += 1;
-  return ''.join(data)
+  data = unpack('s'*length, f.read(length))
+  chars = [x.decode('ascii') for x in data]
+  return ''.join(chars)
 
 def read_float64s(f, nrows):
   data = []
