@@ -46,5 +46,3 @@ def get_all_possible_landmarks():
     'Left ear lobe',
     'Right ear lobe'
   ]
-
-
