@@ -3,7 +3,7 @@
 
 def get_all_emotions():
   '''
-  TODO: Document
+  List of all possible emotions
   '''
   return [
     'ANGER',
@@ -16,7 +16,7 @@ def get_all_emotions():
 
 def get_all_possible_landmarks():
   '''
-  TODO: Document
+  An ordered list of all possible landmarks
   '''
   return [
     'Outer left eyebrow',
