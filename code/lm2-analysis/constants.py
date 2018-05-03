@@ -14,7 +14,7 @@ def get_all_emotions():
     'SURPRISE'
   ]
 
-def get_all_possible_landmarks():
+def get_all_landmarks():
   '''
   An ordered list of all possible landmarks
   '''
