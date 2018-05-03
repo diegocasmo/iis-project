@@ -37,8 +37,7 @@ def get_lm2_features(file_path):
   Return value of each landmark in file
   '''
   try:
-    # Find undefined landmark values in lm2 file
-
+    # Find undefined landmarks in lm2 file
     all_landmarks = get_all_landmarks()
     defined_landmarks = get_defined_landmarks(file_path)
     undefined_landmarks_idx = get_undefined_landmarks_idx(all_landmarks, defined_landmarks)
@@ -55,7 +54,7 @@ def get_lm2_features(file_path):
     for idx in undefined_landmarks_idx:
       defined_landmarks_values.insert(idx, 'NaN')
 
-    # Must have the same number of landmark values as there are possible landmarks
+    # Must have the same number of landmark values as there are possible landmarks (since we filled the undefined ones with 'NaN')
     assert(len(defined_landmarks_values) == len(all_landmarks))
 
     # Unpack feature values in x and y coordinates
@@ -72,7 +71,6 @@ def get_lm2_features(file_path):
     return features
   except Exception as e:
     print('Error: ' + file_path)
-
 
 def get_lm2_label(file_path):
   '''
