@@ -5,6 +5,7 @@ from constants import get_all_emotions, get_all_landmarks
 from itertools import islice
 import glob
 import csv
+import pdb
 
 def get_defined_landmarks(file_path):
   '''
@@ -12,8 +13,10 @@ def get_defined_landmarks(file_path):
   '''
   defined_landmarks = []
   with open(file_path) as file:
-    for line in islice(file, 5, None):
-      # Stop processing as soon as an empty line is discovered
+    # Start reading file after the 'Labels:' line
+    start_line = 5
+    for line in islice(file, start_line, None):
+      # Stop reading lines as soon as an empty line is discovered
       if line in ['\n', '\r\n']:
         break
       defined_landmarks.append(line.rstrip('\n\r')) # Remove end of line character
@@ -35,28 +38,31 @@ def get_lm2_features(file_path):
   '''
   try:
     # Find undefined landmark values in lm2 file
+
     all_landmarks = get_all_landmarks()
     defined_landmarks = get_defined_landmarks(file_path)
     undefined_landmarks_idx = get_undefined_landmarks_idx(all_landmarks, defined_landmarks)
 
     # Find landmark values defined in lm2 file
-    landmark_values = []
+    defined_landmarks_values = []
     with open(file_path) as file:
-      for line in islice(file, len(defined_landmarks) + 7, None):
-        landmark_values.append(line.rstrip('\n\r'))
+      # Start reading file after the '2D Image coordinates' line
+      start_line = len(defined_landmarks) + 7
+      for line in islice(file, start_line, None):
+        defined_landmarks_values.append(line.rstrip('\n\r'))
 
-    # Fill in undefined values in landmark as 'NaN'
+    # Fill-in undefined values in landmark as 'NaN'
     for idx in undefined_landmarks_idx:
-      landmark_values.insert(idx, 'NaN')
+      defined_landmarks_values.insert(idx, 'NaN')
 
-    # Must have the same number of landmark values as landmarks
-    assert(len(landmark_values) == len(all_landmarks))
+    # Must have the same number of landmark values as there are possible landmarks
+    assert(len(defined_landmarks_values) == len(all_landmarks))
 
-    # Unpack feature values in 'x' and 'y' coordinates
+    # Unpack feature values in x and y coordinates
     features = []
-    for value in landmark_values:
+    for value in defined_landmarks_values:
       if value == 'NaN':
-        features += ['NaN'] * 2
+        features += ['NaN'] * 2 # Feature value is undefined in both coordinates
       else:
         features += map(float, value.split())
 
@@ -99,11 +105,13 @@ def create_csv(features):
   '''
   Create CSV file of features
   '''
+  # Create x and y coordinate names for each landmark
   headers = ['Label']
   for landmark in get_all_landmarks():
     headers.append(landmark + '-x')
     headers.append(landmark + '-y')
 
+  # Write out to .csv file
   features.insert(0, headers)
   csv_file = r'data/lm2.csv'
   with open(csv_file, 'w') as output:
