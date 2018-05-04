@@ -202,3 +202,4 @@ $RECYCLE.BIN/
 # Ignore dataset compressed and uncompressed files
 /data/*
 !/data/README.md
+!/data/lm2.csv
