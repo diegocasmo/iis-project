@@ -203,3 +203,4 @@ $RECYCLE.BIN/
 /data/*
 !/data/README.md
 !/data/lm2.csv
+!/data/lm3.csv
