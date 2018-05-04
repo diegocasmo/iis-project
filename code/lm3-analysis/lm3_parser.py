@@ -42,18 +42,22 @@ def create_csv(features):
   '''
   Create CSV file of features
   '''
-  # Create x and y coordinate names for each landmark
+  # Create x,y and z coordinate names for each landmark
   headers = ['Label']
   for landmark in get_all_landmarks():
     headers.append(landmark + '-x')
     headers.append(landmark + '-y')
+    headers.append(landmark + '-z')
+
 
   # Write out to .csv file
   features.insert(0, headers)
-  csv_file = r'data/lm3.csv'
-  with open(csv_file, 'w') as output:
-    writer = csv.writer(output, lineterminator='\n')
+  csv_file = r'lm3.csv'
+  with open(csv_file, 'w') as csvfile:
+    writer = csv.DictWriter(csvfile, fieldnames=headers)
+    writer.writeheader()
     writer.writerows(features)
+
 
 if __name__ == '__main__':
   # file_paths = get_lm3_files_paths()
