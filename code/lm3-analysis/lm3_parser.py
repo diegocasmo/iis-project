@@ -38,8 +38,8 @@ def get_lm3_files_paths():
         file_paths.append(file_path)
   return file_paths
 
-def features_to_list(feature_dict):
-  out = []
+def features_to_list(file_name, feature_dict):
+  out = [get_lm3_label(file_name)]
   lm = get_all_landmarks();
   for m in lm:
     if feature_dict[m] != 'NaN':
@@ -50,6 +50,7 @@ def features_to_list(feature_dict):
       out.append('NaN')
       out.append('NaN')
       out.append('NaN')
+
   return out
 
 def create_csv(features):
@@ -79,9 +80,7 @@ def get_lm3_label(file_path):
       return x
 
 if __name__ == '__main__':
-  # file_paths = get_lm3_files_paths()
-  # features = [parse_lm3_features(file_path) for file_path in file_paths]
-  # create_csv(features)
-  file_path = '../../data/bosphorusDB/__files__/__others__/BosphorusDB_p1/bs000/bs000_E_ANGER_0.lm3'
-  features = features_to_list(get_lm3_features(file_path))
-
+  file_paths = get_lm3_files_paths()
+  print(file_paths)
+  features = [get_lm3_features(file_path) for file_path in file_paths]
+  create_csv(features)
