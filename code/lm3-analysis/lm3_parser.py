@@ -70,6 +70,14 @@ def create_csv(features):
     writer = csv.writer(output, lineterminator='\n')
     writer.writerows(features)
 
+def get_lm3_label(file_path):
+  '''
+  Given a file path, return the label its data represents
+  '''
+  for x in get_all_emotions():
+    if x in file_path:
+      return x
+
 if __name__ == '__main__':
   # file_paths = get_lm3_files_paths()
   # features = [parse_lm3_features(file_path) for file_path in file_paths]
