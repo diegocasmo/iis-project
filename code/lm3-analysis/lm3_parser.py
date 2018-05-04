@@ -38,6 +38,20 @@ def get_lm3_files_paths():
         file_paths.append(file_path)
   return file_paths
 
+def features_to_list(feature_dict):
+  out = []
+  lm = get_all_landmarks();
+  for m in lm:
+    if feature_dict[m] != 'NaN':
+      out.append(feature_dict[m][0])
+      out.append(feature_dict[m][1])
+      out.append(feature_dict[m][2])
+    else:
+      out.append('NaN')
+      out.append('NaN')
+      out.append('NaN')
+  return out
+
 def create_csv(features):
   '''
   Create CSV file of features
@@ -49,19 +63,17 @@ def create_csv(features):
     headers.append(landmark + '-y')
     headers.append(landmark + '-z')
 
-
   # Write out to .csv file
   features.insert(0, headers)
-  csv_file = r'lm3.csv'
-  with open(csv_file, 'w') as csvfile:
-    writer = csv.DictWriter(csvfile, fieldnames=headers)
-    writer.writeheader()
+  csv_file = r'data/lm3.csv'
+  with open(csv_file, 'w') as output:
+    writer = csv.writer(output, lineterminator='\n')
     writer.writerows(features)
-
 
 if __name__ == '__main__':
   # file_paths = get_lm3_files_paths()
   # features = [parse_lm3_features(file_path) for file_path in file_paths]
   # create_csv(features)
   file_path = '../../data/bosphorusDB/__files__/__others__/BosphorusDB_p1/bs000/bs000_E_ANGER_0.lm3'
-  print(get_lm3_features(file_path))
+  features = features_to_list(get_lm3_features(file_path))
+
