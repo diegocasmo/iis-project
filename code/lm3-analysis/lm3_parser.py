@@ -3,7 +3,6 @@
 
 from constants import get_all_emotions, get_all_landmarks
 from itertools import islice
-import re
 import glob
 import csv
 
@@ -30,7 +29,7 @@ def get_lm3_files_paths():
   Return all file paths of lm3 files in the data directory
   '''
   file_paths = []
-  data_dir = r'data/bosphorusDB/__files__/__others__/**/*.lm3'
+  data_dir = r'data/bosphorusDB/__files__/__others__/BosphorusDB_p1/**/*.lm3'
   for file_path in glob.glob(data_dir):
     # Only read lm3 files which are related to emotions
     for x in get_all_emotions():
@@ -81,6 +80,5 @@ def get_lm3_label(file_path):
 
 if __name__ == '__main__':
   file_paths = get_lm3_files_paths()
-  print(file_paths)
-  features = [get_lm3_features(file_path) for file_path in file_paths]
+  features = [features_to_list(file_path, get_lm3_features(file_path)) for file_path in file_paths]
   create_csv(features)
