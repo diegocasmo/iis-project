@@ -1,3 +1,7 @@
+'''
+This is a collection of methods derived from other python notebooks and placed here for brevity.
+'''
+
 import math
 
 import pandas as pd
@@ -19,6 +23,9 @@ def variety(lbl):
     return [lbl+'-x', lbl+'-y', lbl+'-z']
 
 def preprocess_data(dataframe):
+    '''
+    Remove static features, compute nosetip distance, normalize
+    '''
     # print('Num of features:\t%s' % len(data_df.columns.values))
 
     # Drop features potentiall unuseful features 
@@ -64,6 +71,9 @@ def preprocess_data(dataframe):
     return pd.concat([data_df[['Label']], pd.DataFrame.from_dict(d)], axis = 1)
 
 def reduce_features(dataframe, num_of_columns=14):
+    '''
+    Run some dimensionality reductions on a dataframe
+    '''
     features = [x != 'Label' for x in dataframe.columns.values]
 
     # Separating out the features
