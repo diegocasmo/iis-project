@@ -70,7 +70,7 @@ def preprocess_data(dataframe):
     # Create new dataframe (with distance from each feature to nose tip)
     return pd.concat([data_df[['Label']], pd.DataFrame.from_dict(d)], axis = 1)
 
-def reduce_features(dataframe, num_of_columns=14):
+def reduce_features(dataframe, num_of_columns=13):
     '''
     Run some dimensionality reductions on a dataframe
     '''
