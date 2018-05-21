@@ -9,6 +9,7 @@ import pandas as pd
 from constants import get_all_emotions, get_all_landmarks
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
+from sklearn.preprocessing import normalize
 
 def get_euclidean_distance(x1, x2, y1, y2):
     '''
@@ -80,6 +81,9 @@ def reduce_features(dataframe, num_of_columns=14):
 
     # Separating out the label
     labels = dataframe.loc[:,['Label']].values
+
+    # Scale values (mean = 0 and variance = 1)
+    values =  normalize(values, axis=0)
     
     # Set the number of columns we want to reduce
     column_names = ['Col %s' % (i + 1) for i in range(num_of_columns)]   
