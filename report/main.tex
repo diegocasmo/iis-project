@@ -1,0 +1,58 @@
+\documentclass[a4paper]{article}
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[numbers]{natbib}
+\usepackage{amsmath}
+\usepackage{numprint}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xspace}
+\usepackage{url}
+\usepackage{xcolor}
+\newcommand\todo[1]{\textcolor{blue}{#1}}
+\lstset{% parameters for all code listings
+  language=Python,
+  frame=single,
+  columns=fullflexible,
+  basicstyle=\small
+}
+\usepackage[autostyle]{csquotes} % fixes quote directions
+\MakeOuterQuote{"}
+
+% figure numbers reset each section
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{equation}{section}
+
+% Custom macro for including images, \mfigure{img-name}{caption}
+\newcommand{\mfigure}[2]{
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{figures/#1.jpg}
+    \caption{#2}
+    \label{fig:#1}
+\end{figure}
+}
+
+\title{Intelligent Interactive Systems \\ Project Report by Group 12}
+\author{Diego Castillo \and Ankur Shukla \and Tristan Wright }
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\input{sections/introduction.tex}
+\input{sections/data.tex}
+\input{sections/implementation.tex}
+\input{sections/results.tex}
+\input{sections/secondary-groups.tex}
+\input{sections/conclusion.tex}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}
