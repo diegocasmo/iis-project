@@ -3,7 +3,7 @@
 
 def get_all_emotions():
   '''
-  List of all possible emotions
+  List of all emotions
   '''
   return [
     'ANGER',
@@ -14,9 +14,9 @@ def get_all_emotions():
     'SURPRISE'
   ]
 
-def get_all_landmarks():
+def get_all_features():
   '''
-  An ordered list of all possible landmarks
+  An ordered list of all features
   '''
   return [
     'Outer left eyebrow',
