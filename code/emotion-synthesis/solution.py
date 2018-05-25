@@ -34,13 +34,13 @@ def predict_emotion(points, debug=False):
   confidence = {}
   labels = get_all_emotions()
   for index,emotion in enumerate(labels):
-      confidence[emotion] = predicted_labels[index]
+    confidence[emotion] = predicted_labels[index]
 
   if debug:
     print(confidence)
   # Output to json file.
   with open('emotion-output.json', 'w') as outfile:
-      json.dump(confidence, outfile)
+    json.dump(confidence, outfile)
 
 if __name__ == '__main__':
-  predict_emotion(debug=True)
+  predict_emotion(None, debug=True)
