@@ -3,7 +3,7 @@ from constants import get_all_emotions
 from sklearn.decomposition import PCA
 from sklearn.externals import joblib
 from sklearn.preprocessing import normalize
-
+import json
 import pandas as pd
 
 # Sample data, do not ship
@@ -34,4 +34,6 @@ for index,emotion in enumerate(labels):
     confidence[emotion] = predicted_labels[index]
 
 print(confidence)
-
+json_string = json.dumps(confidence)
+with open('output.json', 'w') as outfile:
+    json.dump(confidence, outfile)
