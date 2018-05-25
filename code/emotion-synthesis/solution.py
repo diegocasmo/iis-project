@@ -2,7 +2,6 @@ import numpy as np
 from constants import get_all_emotions
 from sklearn.decomposition import PCA
 from sklearn.externals import joblib
-from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import normalize
 
 import pandas as pd
