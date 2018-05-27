@@ -26,9 +26,9 @@ def predict_emotion(points, debug=False):
   if debug:
     print(principal_components)
 
-  # Load MLP model and predict probability
-  mlp = joblib.load('mlp-model.pkl')
-  predicted_labels = mlp.predict_proba(principal_components)[0]
+  # Load SVM model and predict probability
+  svm = joblib.load('svm-model.pkl')
+  predicted_labels = svm.predict_proba(principal_components)[0]
 
   # Assign each score to its label
   confidence = {}
