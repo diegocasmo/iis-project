@@ -1,9 +1,33 @@
 \section{Results}
 
-\todo{TODO: Discuss results (accuracy, confusion matrix/confidence) for each of the classifiers from above, what data (PCA or TSNE) did we use?, what are the most important features?}
+Each subsection and method here is accompanied with a confusion matrix. The matrix is from a single run of the model. Results are otherwise measured by running the model 100 times on different random splits of data. From these runs we can extract the average accuracy and standard deviation for each model and determine the best one.
+
+\newcommand{\tsne}{t-SNE\xspace}
+
+\subsection{Dimensionality Reduction}
+
+Both PCA and \tsne successfully reduced the dimensionality of each dataset to 15 components.
 
 \subsection{kNN}
 
+\twoupfigure{pca-knn}{tsne-knn}{Confustion matrices for KNN.}{PCA}{\tsne}{knn-conf}
+
+Over 100 runs we can attain an average accuracy of $47.3\%$ with a standard deviation of $0.045$.
+
 \subsection{MLP}
 
+\twoupfigure{pca-mlp}{tsne-mlp}{Confustion matrices for MLP.}{PCA}{\tsne}{mlp-conf}
+
+Over 100 runs with MLP methods we can attain an accuracy of $73.3\%$ with a standard deviation of $0.037$.
+
+\subsection{Random Forests}
+
+\twoupfigure{pca-rf}{tsne-rf}{Confustion matrices for RF.}{PCA}{\tsne}{rf-conf}
+
+$62.9\%$ with a standard deviation of $0.040$.
+
 \subsection{SVM}
+
+\twoupfigure{pca-svm}{tsne-svm}{Confustion matrices for SVM.}{PCA}{\tsne}{svm-conf}
+
+$74.00\%$ with a standard deviation of $0.039$. At a detriment to consistency, this makes it the most accurate model we tried.

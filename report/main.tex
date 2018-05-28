@@ -5,14 +5,15 @@
 
 \usepackage[numbers]{natbib}
 \usepackage{amsmath}
-\usepackage{numprint}
-\usepackage{graphicx}
-\usepackage{titlesec}
 \usepackage{float}
+\usepackage{graphicx}
 \usepackage{listings}
-\usepackage{xspace}
+\usepackage{numprint}
+\usepackage{subcaption}
+\usepackage{titlesec}
 \usepackage{url}
 \usepackage{xcolor}
+\usepackage{xspace}
 \newcommand\todo[1]{\textcolor{blue}{#1}}
 \lstset{% parameters for all code listings
   language=Python,
@@ -29,13 +30,43 @@
 \counterwithin{equation}{section}
 
 % Custom macro for including images, \mfigure{img-name}{caption}
-\newcommand{\mfigure}[2]{
+\newcommand{\jpgfigure}[2]{
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{figures/#1.jpg}
     \caption{#2}
     \label{fig:#1}
 \end{figure}
+}
+
+\newcommand{\pngfigure}[2]{
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{figures/#1.png}
+    \caption{#2}
+    \label{fig:#1}
+\end{figure}
+}
+
+% macro for two-up figures, a few too many arguments maybe but will work.
+% twoupfigure{img1}{img2}{caption main}{caption1}{caption2}{label}
+\newcommand{\twoupfigure}[6]{
+  \begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{figures/#1}
+        \caption{#4}
+        \label{fig:#6a}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{figures/#2}
+        \caption{#5}
+        \label{fig:#6b}
+    \end{subfigure}
+    \caption{#3}\label{fig:#6}
+  \end{figure}
 }
 
 \title{Intelligent Interactive Systems \\ Project Report by Group 12}
