@@ -1,3 +1,20 @@
 \section{Introduction}
 
-\todo{TODO: Introduction to the project and its goal}
+% What is the goal of the project?
+The Bosphorus Database is a dataset intended for research of 2D and 3D human face processing tasks. The analysis and classification of the Bosphorus Database project is to assign one of the six basic emotions (anger, disgust, fear, happy, sadness, and surprise) to a set of labeled facial landmark positions using machine learning algorithms.
+
+\subsection{Analysis Summary and Main Results}
+% Summary of the work and main results (mandatory)
+This report provides a detailed explanation of the analysis performed to the dataset and data preprocessing tasks such as data cleansing, normalization, dimensionality reduction, class imbalance analysis, holdout validation, and finally a discussion of the four different machine learning methods implemented; k-Nearest Neighbors (kNN), Support Vector Machine (SVM), Multilayer Perceptron (MLP), and Random Forest. After performing the former analysis and using the reduced features by the principal component analysis (PCA) of the 3D landmark files (`.lm3') with the corresponding labels, both the SVM and MLP models performed best, consistently achieving an accuracy of $70-80\%$, in contrast to the kNN and Random Forest models which obtained an average accuracy of $50-60\%$.
+
+\subsection{What Has Worked, What Has Not}
+% What has worked and what has not (mandatory)
+Our first approach consisted of doing a feature transformation of the original measurements by computing the distance from each feature to the `Nose Tip' as well as removing features which we thought would have little variation regardless of the emotion. The feature transformation was implemented using either the Euclidean or Manhattan distance, but the accuracy achieved by the classifiers was lower than what these were able to obtain by simply using the original features. Other techniques, such as normalizing and dimensionality reduction with PCA, proved to be of great importance for the classifiers to improve their respective accuracies.
+
+\subsection{Role Played By Group Members}
+% Role played by each individual group member (mandatory)
+\todo{TODO: Not sure if I understand this question}
+
+\subsection{Group Members Contributions}
+% One paragraph explaining the contribution of each individual student should be included (mandatory)
+Diego Castillo worked in the implementation of the `.lm2' parser, PCA and t-SNE dimensionality reduction techniques, the randomized holdout validation, and the implementation of the kNN and SVM models. Ankur Shukla created the emotion synthesis output format, implemented the confusion matrix plot, made experiments with k-fold  and leave-one out validation, and implemented the random forest classifier. Finally, Tristan Wright was in charge of creating the computer vision API format as well as parsing and classifying it, implemented the MLP classifier, the `.bnt' and `.lm3' parsers, and recorded the video showcasing the project.
