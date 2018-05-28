@@ -2,18 +2,18 @@
 
 % Introduction to the dataset
 % What are facial landmarks?
-Key points on the face which allow to perform tasks focused on the face, such as emotion classification, are defined as facial landmarks. These facial landmarks (features), for instance the location of the outer left eye brow, are provided in the Bosphorus Database dataset in three different types of files. Files with an `.lm2' extension have 2D feature coordinates, `.lm3' have 3D feature coordinates, and finally the `.bnt' files have both 2D coordinates and corresponding 3D image coordinates, each labeled with the corresponding emotion it represents.
+Facial landmarks are key points which allow to perform tasks such as emotion classification. These facial landmarks (features) --- for example the location of the outer left eye brow --- are provided in the Bosphorus Database dataset in three different types of files. Files with an `.lm2' extension have 2D feature coordinates, `.lm3' have 3D feature coordinates, and finally the `.bnt' files have both 2D coordinates and corresponding 3D image coordinates, each labeled with the corresponding emotion it represents.
 
 % How many samples?
 % How many labels?
 % Distribution of labels in dataset
-There are a total of 453 samples, each with an `.lm2', `.lm3', and `.bnt' file. A single file corresponds to one out of the six possible emotions (anger, disgust, fear, happy, sadness, and surprise). Of these 453 samples, 71 correspond to `anger', 69 to `disgust', 70 to `fear', 106 to `happy', 66 to `sadness', and 71 to `surprise'. Since some labels have more samples than others, the dataset suffers from class imbalance. Class imbalance is a phenomenon which usually results in models which tend to focus on the classification of the samples which are overrepresented while ignoring or misclassifying the underrepresented samples \cite{data-mining-intro}. Section \ref{impl} explains how this issue was addressed.
+There are a total of 453 samples, each with an `.lm2', `.lm3', and `.bnt' file. A single file corresponds to one out of the six possible emotions (\textit{anger}, \textit{disgust}, \textit{fear}, \textit{happy}, \textit{sadness}, and \textit{surprise}). Of these 453 samples, 71 correspond to `anger', 69 to `disgust', 70 to `fear', 106 to `happy', 66 to `sadness', and 71 to `surprise'. Since some labels have more samples than others, the dataset suffers from class imbalance. Class imbalance is a phenomenon that usually results in models which tend to focus on the classification of the samples which are overrepresented while ignoring --- or misclassifying --- the underrepresented samples \cite{data-mining-intro}. Section \ref{impl} explains how this issue was addressed.
 
 For each possible file extension a parser was created to extract the features for the emotion classification task. The parsers find all files with a particular extension and create a `.csv' file which consists of all the samples with their corresponding label, and all features associated with each sample.
 
 \subsection{Data Cleansing}
 
-Each sample can have at most 26 features, but it is possible for some of these not to be defined in certain occasions. The parsers address this issue by setting the value of the feature to `NaN' across all the dimensions which the file being parsed defines. In the analysis and classification all features which have at least one undefined (i.e. `NaN') value are removed.
+Each sample can have at most 26 features, but in certain occasions it is not possible for some of these to be defined. The parsers address this issue by setting the value of the feature to `NaN' across all the dimensions which the file being parsed defines. In the analysis and classification all features which have at least one undefined (i.e. `NaN') value are removed.
 
 \subsection{Data Transformation}
 
@@ -21,7 +21,7 @@ As explained in section \ref{intro:what-has-worked-what-has-not}, a few data tra
 
 \subsection{Normalization}
 
-Normalization refers to the process of standardizing the values of independent features of a dataset \cite{data-mining-intro}. Since many of the machine learning techniques use distance to compute the difference between two or more distinct samples, a feature within these samples that has a broad range of values will dominate the process. In order to avoid this, the range of all features was normalized so that each feature contributed approximately proportionately to the computation.
+When distance is used to compute the difference between two or more distinct samples, features that have broad range of values will dominate the analysis. Normalization, a technique to avoid such problem, refers to the process of standardizing the values of independent features of a dataset \cite{data-mining-intro}. All features in the dataset were normalized such that each feature contributed approximately proportionately to the computation.
 
 \subsection{Dimensionality Reduction}
 
