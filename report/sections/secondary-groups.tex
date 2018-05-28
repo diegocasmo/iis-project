@@ -1,7 +1,7 @@
 \section{Secondary Groups}
 
 %TODO: Explain format read from the Computer Vision group (and results if we manage to get some examples of their work), and output given to the Emotion Synthesis group
-Our Secondary groups were Computer Vision(CV) and Emotion Synthesis(ES). Our task in final pipeline was to read the input given by CV group and send the output to ES group.
+Our Secondary groups were Computer Vision (CV) and Emotion Synthesis (ES). Our task in the final pipeline was to read the input given by CV group and send the output to ES group.
 
 \subsection{Computer Vision Group}
 %Format read from CV Group
@@ -9,7 +9,7 @@ After training our models with the Bosphorus database we need to predict an emot
 
 \subsection{Emotion Synthesis Group}
 %Format given to Emotion Synthesis Group
-We are using SVM model trained on Bosphorus Dataset as it is more stable and gives better accuracy as seen in the Implementation section. We are sending output in a JSON format which contatining all the six labels with their confidence score. Confidence score tells about the probability of the emotion predicted by our model. We are also sending confusion matrix of our model so that they can get the idea how well our model is performing for each of the labels.
+We are using SVM model trained on Bosphorus Dataset as it is more stable and gives better accuracy as seen in the Implementation section. We are sending output in a JSON format which contatining all the six labels with their confidence score. Confidence scores tells us about the probability of the emotion predicted by our model. We are also sending a confusion matrix of our model so that they can get an idea of how well our model is performing for each of the labels.
 
 
 \begin{figure}[H]
