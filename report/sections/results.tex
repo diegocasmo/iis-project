@@ -6,9 +6,9 @@ Each subsection here is dedicated to a method and is accompanied with two confus
 
 \twoupfigure{pca-knn}{tsne-knn}{Confusion matrices for \knn.}{PCA}{\tsne}{knn-conf}
 
-With \knn methods we can attain an average accuracy of $47.3\%$ with a standard deviation of $0.045$, this is less than mediocre. This difference in accuracy compared to other methods can be thought of as a problem with clustering and the nature of the landmark points. Any set of emotions where, for example an eyebrow point is more or less the same point (e.g. surprised), will be classified by kNN as the same emotion, no other points will be taken into account. Among our labels are two super-categories of emotions, positive (happy, surprised) and negative (fear, angry, disgust, sad). The reader is invited to make those emotions with his or her face and take note the placement of their eyebrows. They may notice they are in the same place for each emotion, other features may be in the same place too.
+With \knn methods we can attain an average accuracy of $46.5\%$ with a standard deviation of $0.045$, this is less than mediocre. This difference in accuracy compared to other methods can be thought of as a problem with clustering and the nature of the landmark points. Any set of emotions where, for example an eyebrow point is more or less the same point (e.g. surprised), will be classified by kNN as the same emotion, no other points will be taken into account. Among our labels are two super-categories of emotions, positive (happy, surprised) and negative (fear, angry, disgust, sad). The reader is invited to make those emotions with his or her face and take note the placement of their eyebrows. They may notice they are in the same place for each emotion, other features may be in the same place too.
 
-We ran another experiment to demonstrate that \knn can detect these distinctions. Simply by running the dataset through the \knn classifier and counting how many positive and negative emotions it accurately detects. The results are telling, we can classify positive emotions with 67\% accuracy and negative emotions with 91\% accuracy. We can inspect this further by referring to the relevant confusion matrix (figure \ref{fig:pca-knn}), \knn has quite admonishable accuracy when trying to classify the positive emotion surprise.
+We ran another experiment to demonstrate that \knn can detect these distinctions. Simply by running the dataset through the \knn classifier and counting how many positive and negative emotions it accurately detects. The results are telling, we can classify positive emotions with 67\% accuracy and negative emotions with 89\% accuracy. We can inspect this further by referring to the relevant confusion matrix (figure \ref{fig:pca-knn}), \knn has quite admonishable accuracy when trying to classify the positive emotion surprise.
 
 \subsection{MLP}
 
@@ -20,10 +20,10 @@ With MLP methods we can attain an accuracy of $73.3\%$ with a standard deviation
 
 \twoupfigure{pca-rf}{tsne-rf}{Confusion matrices for RF.}{PCA}{\tsne}{rf-conf}
 
-With RF methods we can attain an accuracy of $62.9\%$ with a standard deviation of $0.040$. While consistent, it is still about 10\% less accurate than the competing supervised methods. Furthermore, unlike \knn methods, RF's inherit structure determines features to be correlated, it is not just a series of points which some method is blindly clustering, hence the 15\% accuracy boost over \knn.
+With RF methods we can attain an accuracy of $62.9\%$ with a standard deviation of $0.043$. While consistent, it is still about 10\% less accurate than the competing supervised methods. Furthermore, unlike \knn methods, RF's inherit structure determines features to be correlated, it is not just a series of points which some method is blindly clustering, hence the 15\% accuracy boost over \knn. An interesting difference to point out in the results is while \knn most misclassifies surprise, RF misclassifies anger as disgust (figure \ref{fig:pca-rf}).
 
 \subsection{SVM}
 
 \twoupfigure{pca-svm}{tsne-svm}{Confusion matrices for SVM.}{PCA}{\tsne}{svm-conf}
 
-With SVM methods we get an accuracy of $74.00\%$ with a standard deviation of $0.039$. To a marginal detriment of consistency with MLP methods, this makes it the most accurate model.
+With SVM methods we get an accuracy of $74.00\%$ with a standard deviation of $0.045$. To a marginal detriment of consistency with MLP methods, this makes it the most accurate model.
