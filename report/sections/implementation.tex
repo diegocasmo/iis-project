@@ -1,19 +1,28 @@
-\section{Implementation}
+\section{Implementation} \label{impl}
 
-\todo{TODO: Explain each of the classifiers below and their hyper-parameters. Do not talk about their result, that belongs in the next section}
+% leave-one-out validation
+% k-fold validation
+% Holdout validation
+Once the features in the dataset had been cleansed and their dimensionality reduced, the k-fold, leave-one-out, and holdout validation methods were implemented to determine how to train the models. The holdout validation method performed best out of the three.
 
-\subsection{k-Nearest Neighbors (kNN)}
+% More on holdout validation
+% Solving class imbalance
+The holdout validation method consists of splitting the dataset in two independent sets: a train and a test set. The training set is used to train the model, while the test set is used to evaluate its performance. Since the dataset has class imbalance, a total of 60 samples ($\sim$$80\%$) per label  were randomly selected to be inserted in the training set, while the remaining samples ($\sim$$20\%$) were inserted in the test set. Hence, even though the dataset has class imbalance, the different models were trained using the same number of samples per label.
 
-\todo{TODO: What is kNN (short intro)?, hyper-parameters setup and what each of them mean}
+What follows is a short description of each of the models implemented and the hyper-parameters used to achieved the best results.
 
-\subsection{Support Vector Machine (SVM)}
+\subsection{kNN}
 
-\todo{TODO: What is a SVM (short intro)?, hyper-parameters setup and what each of them mean}
+A kNN classifier simply classifies samples by a majority vote of its neighbors, with a sample being assigned to the class most common among its \texttt{k} nearest neighbors \cite{data-mining-intro}. The hyper-parameter \texttt{n\_neighbors} determines the number of neighbors to use to choose the label of a sample, a total of 15 neighbors attained the best results.
 
-\subsection{Multilayer Perceptron (MLP)}
+\subsection{SVM}
 
-\todo{TODO: What is a MLP (short intro)?, hyper-parameters setup and what each of them mean}
+A SVM is a supervised learning algorithm which creates a hyperplane that represents the input samples as points in space, such that samples of different classes are separated from each other. New samples are then mapped into that same space and predicted to belong to a class based on where in that space these are located \cite{data-mining-intro}.
+
+\subsection{MLP}
+
+A MLP is a feed-forward artificial neural network that uses supervised learning with backpropagation for training the network (update its weights) to essentially map a weighted input to a label. The MLP uses the \texttt{adam} solver, which is a stochastic gradient-based optimizer, a logistic sigmoid function as its activation function, a single hidden layer with a total of 5 neurons, and a maximum of 2000 iterations to reach convergence.
 
 \subsection{Random Forest}
 
-\todo{TODO: What is a Random Forest (short intro)?, hyper-parameters setup and what each of them mean}
+A random forest is an ensemble learning method for classification that works by creating multiple decision trees during training and predicting the class that is the mode of the classes of the individual decision trees \cite{data-mining-intro}. A total of 10 trees in the forest, with the \texttt{GINI} splitting criterion, and a maximum depth of 6 per tree achieved the best results.
