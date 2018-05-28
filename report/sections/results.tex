@@ -4,7 +4,7 @@ Each subsection here is dedicated to a method and is accompanied with two confus
 
 \subsection{kNN}
 
-\twoupfigure{pca-knn}{tsne-knn}{Confustion matrices for KNN.}{PCA}{\tsne}{knn-conf}
+\twoupfigure{pca-knn}{tsne-knn}{Confusion matrices for KNN.}{PCA}{\tsne}{knn-conf}
 
 With KNN methods we can attain an average accuracy of $47.3\%$ with a standard deviation of $0.045$, this is less than mediocre. This difference in accuracy compared to other methods can be thought of as a problem with clustering and the nature of the landmark points. Any set of emotions where, for example an eyebrow point is more or less the same point (e.g. surprised), will be classified by kNN as the same emotion, no other points will be taken into account. Among our labels are two super-categories of emotions, positive (happy, surprised) and negative (fear, angry, disgust, sad). The reader is invited to make those emotions with his or her face and take note the placement of their eyebrows. They may notice they are in the same place for each emotion, other features may be in the same place too.
 
@@ -12,18 +12,18 @@ We ran another experiment to demonstrate that KNN can detect these distinctions.
 
 \subsection{MLP}
 
-\twoupfigure{pca-mlp}{tsne-mlp}{Confustion matrices for MLP.}{PCA}{\tsne}{mlp-conf}
+\twoupfigure{pca-mlp}{tsne-mlp}{Confusion matrices for MLP.}{PCA}{\tsne}{mlp-conf}
 
 With MLP methods we can attain an accuracy of $73.3\%$ with a standard deviation of $0.037$. This is great.
 
 \subsection{Random Forests}
 
-\twoupfigure{pca-rf}{tsne-rf}{Confustion matrices for RF.}{PCA}{\tsne}{rf-conf}
+\twoupfigure{pca-rf}{tsne-rf}{Confusion matrices for RF.}{PCA}{\tsne}{rf-conf}
 
 With RF methods we can attain an accuracy of $62.9\%$ with a standard deviation of $0.040$. While consistent, it is still about 10\% less accurate than the competing supervised methods.
 
 \subsection{SVM}
 
-\twoupfigure{pca-svm}{tsne-svm}{Confustion matrices for SVM.}{PCA}{\tsne}{svm-conf}
+\twoupfigure{pca-svm}{tsne-svm}{Confusion matrices for SVM.}{PCA}{\tsne}{svm-conf}
 
 With SVM methods we get an accuracy of $74.00\%$ with a standard deviation of $0.039$. To a marginal detriment of consistency with MLP methods, this makes it the most accurate model.
