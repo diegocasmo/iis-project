@@ -10,20 +10,37 @@ With \knn methods we can attain an average accuracy of $46.5\%$ with a standard 
 
 We ran another experiment to demonstrate that \knn can detect these distinctions. Simply by running the dataset through the \knn classifier and counting how many positive and negative emotions it accurately detects. The results are telling, we can classify positive emotions with 67\% accuracy and negative emotions with 89\% accuracy. We can inspect this further by referring to the relevant confusion matrix (figure \ref{fig:pca-knn}), \knn has quite admonishable accuracy when trying to classify the positive emotion surprise.
 
-\subsection{MLP}
-
-\twoupfigure{pca-mlp}{tsne-mlp}{Confusion matrices for MLP.}{PCA}{\tsne}{mlp-conf}
-
-With MLP methods we can attain an accuracy of $73.3\%$ with a standard deviation of $0.037$. This is demonstrates the strength of supervised learning. Unlike \knn methods, neural networks can detect correlations and relations in datasets.
-
 \subsection{Random Forests}
 
 \twoupfigure{pca-rf}{tsne-rf}{Confusion matrices for RF.}{PCA}{\tsne}{rf-conf}
 
-With RF methods we can attain an accuracy of $62.9\%$ with a standard deviation of $0.043$. While consistent, it is still about 10\% less accurate than the competing supervised methods. Furthermore, unlike \knn methods, RF's inherit structure determines features to be correlated, it is not just a series of points which some method is blindly clustering, hence the 15\% accuracy boost over \knn. An interesting difference to point out in the results is while \knn most misclassifies surprise, RF misclassifies anger as disgust (figure \ref{fig:pca-rf}).
+With RF methods we can attain an accuracy of $62.9\%$ with a standard deviation of $0.043$. While consistent, it is still about 10\% less accurate than the competing supervised methods. Furthermore, unlike \knn methods, RF's inherit structure determines features to be correlated, it is not just a series of points which some method is blindly clustering, hence the 15\% accuracy boost over \knn. An interesting difference to point out in the results is while \knn most misclassifies surprise, RF misclassifies anger as disgust (figure \ref{fig:pca-rf}). It is also worthwhile noting that RF is the best method with \tsne, although the accuracy is only barely better than random classification at 28\%.
+
+\subsection{MLP}
+
+\twoupfigure{pca-mlp}{tsne-mlp}{Confusion matrices for MLP.}{PCA}{\tsne}{mlp-conf}
+
+With MLP methods we can attain an accuracy of $73.3\%$ with a standard deviation of $0.037$. This immediate increase in accuracy demonstrates the strength of supervised learning over unsupervised methods above. Unlike \knn methods, neural networks can fit correlations and relations in datasets, although perhaps over-fit in some places. After a closer look at the confusion matrix in figure \ref{fig:pca-mlp} we see a faint bottom-left to top-right diagonal from anger to sadness consisting of commonly misclassified emotions.
 
 \subsection{SVM}
 
 \twoupfigure{pca-svm}{tsne-svm}{Confusion matrices for SVM.}{PCA}{\tsne}{svm-conf}
 
-With SVM methods we get an accuracy of $74.00\%$ with a standard deviation of $0.045$. To a marginal detriment of consistency with MLP methods, this makes it the most accurate model.
+With SVM methods we get an accuracy of $74.00\%$ with a standard deviation of $0.045$. To a marginal detriment of consistency against MLP methods, this makes it the most accurate model. It is also the only model to score 100\% for a single emotion "happy". However, along with MLP methods, it misclassifies fear for surprise quite often (figure \ref{fig:pca-svm}).
+
+% this part belongs somewhere else, could be quantified a bit more, like actually measuring distances from emotions.
+By inspecting which emotions are most misclassified as others across all PCA figures for each classifier we can intuitively create a emotional spectrum (figure \ref{spectrum}.
+
+\begin{figure} \label{fig:spectrum}
+\centering
+\begin{tikzpicture}[]
+\filldraw
+(0,0)  circle (2pt) node[align=left,   below] {Sadness}  --
+(2,0)  circle (2pt) node[align=center, below] {Anger}    --
+(4,0)  circle (2pt) node[align=center, below] {Disgust}  --
+(6,0)  circle (2pt) node[align=center, below] {Fear}     --
+(8,0)  circle (2pt) node[align=center, below] {Surprise} --
+(10,0) circle (2pt) node[align=right,  below] {Happy};
+\end{tikzpicture}
+\caption{A spectrum of emotions.}
+\end{figure}
