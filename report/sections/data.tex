@@ -2,12 +2,12 @@
 
 % Introduction to the dataset
 % What are facial landmarks?
-Key points on the face which allow to perform tasks focused on the face, such as emotion classification, are defined as facial landmarks. These facial landmarks (features), for instance the location of the outer left eye brow, are provided in the Bosphorus Database dataset in three different types of files. Files with an `.lm2' extension have 2D feature coordinates, `.lm3' have 3D feature coordinates, and finally the `.btn' files have both 2D coordinates and corresponding 3D image coordinates, each labeled with the corresponding emotion it represents.
+Key points on the face which allow to perform tasks focused on the face, such as emotion classification, are defined as facial landmarks. These facial landmarks (features), for instance the location of the outer left eye brow, are provided in the Bosphorus Database dataset in three different types of files. Files with an `.lm2' extension have 2D feature coordinates, `.lm3' have 3D feature coordinates, and finally the `.bnt' files have both 2D coordinates and corresponding 3D image coordinates, each labeled with the corresponding emotion it represents.
 
 % How many samples?
 % How many labels?
 % Distribution of labels in dataset
-There are a total of 453 samples, each with an `.lm2', `.lm3', and `.btn' file. A single file corresponds to one out of the six possible emotions (anger, disgust, fear, happy, sadness, and surprise). Of these 453 samples, 71 correspond to `anger', 69 to `disgust', 70 to `fear', 106 to `happy', 66 to `sadness', and 71 to `surprise'. Since some labels have more samples than others, the dataset suffers from class imbalance. Class imbalance is a phenomenon which usually results in models which tend to focus on the classification of the samples which are overrepresented while ignoring or misclassifying the underrepresented samples \cite{data-mining-intro}. Section \ref{impl} explains how this issue was addressed.
+There are a total of 453 samples, each with an `.lm2', `.lm3', and `.bnt' file. A single file corresponds to one out of the six possible emotions (anger, disgust, fear, happy, sadness, and surprise). Of these 453 samples, 71 correspond to `anger', 69 to `disgust', 70 to `fear', 106 to `happy', 66 to `sadness', and 71 to `surprise'. Since some labels have more samples than others, the dataset suffers from class imbalance. Class imbalance is a phenomenon which usually results in models which tend to focus on the classification of the samples which are overrepresented while ignoring or misclassifying the underrepresented samples \cite{data-mining-intro}. Section \ref{impl} explains how this issue was addressed.
 
 For each possible file extension a parser was created to extract the features for the emotion classification task. The parsers find all files with a particular extension and create a `.csv' file which consists of all the samples with their corresponding label, and all features associated with each sample.
 
@@ -25,4 +25,4 @@ Normalization refers to the process of standardizing the values of independent f
 
 \subsection{Dimensionality Reduction}
 
-After the features in the dataset were cleansed, a total of 58 features remained (when using the `.lm3' dataset). Machine learning algorithms based on distance perform better if the number of features is low \cite{data-mining-intro}. Hence, both Principal Component Analysis (PCA) and t-Distributed Stochastic Neighbor Embedding (t-SNE) were implemented to reduce the number of features. As already state in section \ref{intro:analysis-summary-and-main-results}, the PCA reduction achieved the best results.
+After the features in the dataset were cleansed, a total of 58 features remained (when using the `.lm3' dataset). Machine learning algorithms based on distance perform better if the number of features is low \cite{data-mining-intro}. Hence, both PCA and t-SNE were implemented to reduce the number of features. As already stated in section \ref{intro:analysis-summary-and-main-results}, the PCA reduction achieved the best results.
