@@ -49,27 +49,6 @@
 \end{figure}
 }
 
-% macro for two-up figures, a few too many arguments maybe but will work.
-% twoupfigure{img1}{img2}{caption main}{caption1}{caption2}{label}
-\newcommand{\twoupfigure}[6]{
-  \begin{figure}
-    \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{figures/#1}
-        \caption{#4}
-        \label{fig:#1}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{figures/#2}
-        \caption{#5}
-        \label{fig:#2}
-    \end{subfigure}
-    \caption{#3}\label{fig:#6}
-  \end{figure}
-}
-
 \newcommand{\tsne}{t-SNE\xspace}
 \newcommand{\knn}{kNN\xspace}
 
