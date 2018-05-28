@@ -21,13 +21,13 @@ def predict_emotion(points, debug=False):
   all_values = normalize([r], axis=1)
 
   # Load PCA model and transform input
-  pca = joblib.load('pca-model.pkl')
+  pca = joblib.load('../pca-model.pkl')
   principal_components = pca.transform(all_values)
   if debug:
     print(principal_components)
 
   # Load SVM model and predict probability
-  svm = joblib.load('svm-model.pkl')
+  svm = joblib.load('../svm-model.pkl')
   predicted_labels = svm.predict_proba(principal_components)[0]
 
   # Assign each score to its label
