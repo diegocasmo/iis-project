@@ -25,4 +25,5 @@ Normalization refers to the process of standardizing the values of independent f
 
 \subsection{Dimensionality Reduction}
 
-After the features in the dataset were cleansed, a total of 58 features remained (when using the `.lm3' dataset). Machine learning algorithms based on distance perform better if the number of features is low \cite{data-mining-intro}. Hence, both PCA and t-SNE were implemented to reduce the number of features. As already stated in section \ref{intro:analysis-summary-and-main-results}, the PCA reduction achieved the best results.
+After the features in the dataset were cleansed, a total of 58 features remained (when using the `.lm3' dataset). Machine learning algorithms based on distance perform better if the number of features is low \cite{data-mining-intro}. Hence, both PCA and t-SNE were implemented to reduce the number of features.
+A divide-and-conquer approach was used to determine the number of features to reduce to. For both dimensionality reduction techniques, a reduction to 15 components achieved the best results. As already stated in section \ref{intro:analysis-summary-and-main-results}, the PCA reduction obtained the best results.
