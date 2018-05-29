@@ -5,7 +5,7 @@ import pandas as pd
 
 from constants import get_all_emotions
 
-def get_train_test_split(df, column_names,index):
+def get_train_test_split(df, column_names, index, verbose=False):
     '''
     Split data into training and test sets
     '''
@@ -25,7 +25,7 @@ def get_train_test_split(df, column_names,index):
     test_df = test_df.sample(frac=1)
 
         # Just print once
-    if index == 0:
+    if verbose and index == 0:
         # Take a look at the labels distribution
         print('--------------------Training--------------------')
         rows, cols = train_df.shape
