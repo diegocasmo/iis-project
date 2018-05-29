@@ -1,19 +1,29 @@
 \section{Data}
 
-\todo{TODO: Introduction to dataset, where does it come from?, number of files, structure, lm2, lm3, btn, labels, features, imbalance, etc}
+% Introduction to the dataset
+% What are facial landmarks?
+Facial landmarks are key points which allow to perform tasks such as emotion classification. These facial landmarks (features) --for example the location of the outer left eye brow-- are provided in the Bosphorus Database dataset in three different types of files. Files with an `.lm2' extension have 2D feature coordinates, `.lm3' have 3D feature coordinates, and finally the `.bnt' files have both 2D coordinates and corresponding 3D image coordinates, each labeled with the corresponding emotion it represents.
+
+% How many samples?
+% How many labels?
+% Distribution of labels in dataset
+There are a total of 453 samples, each with an `.lm2', `.lm3', and `.bnt' file. A single file corresponds to one out of the six possible emotions (\textit{anger}, \textit{disgust}, \textit{fear}, \textit{happy}, \textit{sadness}, and \textit{surprise}). Of these 453 samples, 71 correspond to `anger', 69 to `disgust', 70 to `fear', 106 to `happy', 66 to `sadness', and 71 to `surprise'. Since some labels have more samples than others, the dataset suffers from class imbalance. Class imbalance is a phenomenon that usually results in models which tend to focus on the classification of the samples which are overrepresented while ignoring --or misclassifying-- the underrepresented samples \cite{data-mining-intro}. Section \ref{impl} explains how this issue was addressed.
+
+For each possible file extension a parser was created to extract the features for the emotion classification task. The parsers find all files with a particular extension and create a `.csv' file which consists of all the samples with their corresponding label, and all features associated with each sample.
 
 \subsection{Data Cleansing}
 
-\todo{TODO: Talk about some of the features not being defined in all inputs (NaN)}
+Each sample can have at most 26 features, but in certain occasions it is not possible for some of these to be defined. The parsers address this issue by setting the value of the feature to `NaN' across all the dimensions which the file being parsed defines. In the analysis and classification all features which have at least one undefined (i.e. `NaN') value are removed.
 
 \subsection{Data Transformation}
 
-\todo{TODO: Explain how we tried removing `static' features and computing distance to `Nose Tip' but these ended up not being as accurate as simply using the `regular' features}
+As explained in section \ref{intro:what-has-worked-what-has-not}, a few data transformation strategies were tested. Since none of these achieved positive results, the original features with the removed undefined values were used during the rest of the analysis.
 
 \subsection{Normalization}
 
-\todo{TODO: Why is this necessary?}
+When distance is used to compute the difference between two or more distinct samples, features that have broad range of values will dominate the analysis. Normalization, a technique to avoid such problem, refers to the process of standardizing the values of independent features of a dataset \cite{data-mining-intro}. All features in the dataset were normalized such that each feature contributed approximately proportionately to the computation.
 
 \subsection{Dimensionality Reduction}
 
-\todo{TODO: PCA v.s. TSNE}
+After the features in the dataset were cleansed, a total of 58 features remained (when using the `.lm3' dataset). Machine learning algorithms based on distance perform better if the number of features is low \cite{data-mining-intro}. Hence, both PCA and t-SNE were implemented to reduce the number of features.
+A divide-and-conquer approach was used to determine the number of features to reduce to. For both dimensionality reduction techniques, a reduction to 15 components achieved the best results. As already stated in section \ref{intro:analysis-summary-and-main-results}, the PCA reduction obtained the best results.

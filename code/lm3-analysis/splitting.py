@@ -5,7 +5,7 @@ import pandas as pd
 
 from constants import get_all_emotions
 
-def get_train_test_split(df, column_names,index, verbose=False):
+def get_train_test_split(df, column_names, index, verbose=False):
     '''
     Split data into training and test sets
     '''

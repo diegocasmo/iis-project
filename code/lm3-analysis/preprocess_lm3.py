@@ -27,51 +27,10 @@ def preprocess_data(dataframe):
     '''
     Remove static features, compute nosetip distance, normalize
     '''
-    # print('Num of features:\t%s' % len(data_df.columns.values))
+    return dataframe.dropna(axis=1, how='any')
 
-    # Drop features potentiall unuseful features 
-    drops = variety('Right nose peak') + variety('Left nose peak') + \
-            variety('Left temple') + variety('Right temple') + \
-            variety('Right ear lobe') + variety('Left ear lobe') + \
-            variety('Nose saddle left') + variety('Nose saddle right') + variety('Chin middle')
-    # errors = 'ignore' because it will throw if columns aren't there
-    data_df = dataframe.drop(drops, axis=1, errors='ignore')
-#     print('after drop un-used\t%s' % len(data_df.columns.values))
 
-    # Drop features where 'NaN' is present
-    data_df = data_df.dropna(axis=1, how='any')
-#     print('after drop NaN\t\t%s' % len(data_df.columns.values))
-#     data_df.head()
-
-    # Compute the distance from all points to the nose tip (intuition: nose tip position is likely to be similar regardless of emotion)
-
-    # Create new dataset using distance from each landmark to the nose tip as features
-    all_landmarks = get_all_landmarks()
-    valid_landmarks = []
-
-    # Remove landmarks which were previously removed due to undefined values ('NaN')
-    columns = data_df.columns.values
-    for landmark in all_landmarks:
-        if landmark + '-x' in columns and landmark + '-y' in columns and landmark + '-z' in columns:
-            valid_landmarks.append(landmark)
-
-    # Create dictionary to temporarily hold distance values
-    d = {}
-    for landmark in valid_landmarks:
-        d[landmark + '-distance'] = []
-
-    # For each feature, compute distance from nose tip
-    for _, row in data_df.iterrows():
-        for landmark in valid_landmarks:
-            nose_x, nose_y, nose_z = (row['Nose tip-x'], row['Nose tip-y'], row['Nose tip-z'])
-            landmark_x, landmark_y, landmark_z = (row[landmark + '-x'], row[landmark + '-y'], row[landmark + '-z'])
-            distance = get_euclidean_distance(landmark_x, nose_x, landmark_y, nose_y, landmark_z, nose_z)
-            d[landmark + '-distance'].append(distance)
-
-    # Create new dataframe (with distance from each feature to nose tip)
-    return pd.concat([data_df[['Label']], pd.DataFrame.from_dict(d)], axis = 1)
-
-def reduce_features(dataframe, num_of_columns=13):
+def reduce_features(dataframe, num_of_columns=15):
     '''
     Run some dimensionality reductions on a dataframe
     '''
@@ -84,7 +43,7 @@ def reduce_features(dataframe, num_of_columns=13):
     labels = dataframe.loc[:,['Label']].values
 
     # Scale values (mean = 0 and variance = 1)
-    values =  normalize(values, axis=0)
+    values =  normalize(values, axis=1)
     
     # Set the number of columns we want to reduce
     column_names = ['Col %s' % (i + 1) for i in range(num_of_columns)]   
