@@ -6,7 +6,7 @@
   - Run ``source activate iis`` to activate environment
 
 ## Data
-  - See [data instructions](/data/README.md)
+  - See [data instructions](/data/)
 
 ## Results
   - Best results are summarized in the [/code/dataset-analysis-and-classification.ipynb](/code/dataset-analysis-and-classification.ipynb) notebook
