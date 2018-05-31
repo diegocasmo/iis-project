@@ -4,37 +4,30 @@ Each subsection here is dedicated to a method and is accompanied with two confus
 
 % macro for two-up figures, a few too many arguments maybe but will work.
 % twoupfigure{img1}{img2}{caption main}{caption1}{caption2}{label}
-\newcommand{\twoupfigure}[6]{
-  \begin{figure}
+\begin{figure}
     \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{figures/pca-knn}
+    \begin{subfigure}[b]{0.24\textwidth}
+        \includegraphics[width=\textwidth]{figures/pca-knn.png}
         \caption{\knn}
         \label{fig:pca-knn}
     \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{figures/pca-rf}
+    \begin{subfigure}[b]{0.24\textwidth}
+        \includegraphics[width=\textwidth]{figures/pca-rf.png}
         \caption{RF}
         \label{fig:pca-rf}
     \end{subfigure}
-    ~
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{figures/pca-mlp}
+    \begin{subfigure}[b]{0.24\textwidth}
+        \includegraphics[width=\textwidth]{figures/pca-mlp.png}
         \caption{MLP}
         \label{fig:pca-mlp}
     \end{subfigure}
-    \caption{#3}\label{fig:#6}
-    ~
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{figures/pca-svm}
+    \begin{subfigure}[b]{0.24\textwidth}
+        \includegraphics[width=\textwidth]{figures/pca-svm.png}
         \caption{SVM}
         \label{fig:pca-svm}
     \end{subfigure}
     \caption{Confusion matrices for methods run with PCA dimensionality reduction.}\label{fig:results}
-  \end{figure}
-}
+\end{figure}
 
 \subsection{\knn}
 
@@ -55,9 +48,9 @@ With MLP methods we can attain an accuracy of $73.3\%$ with a standard deviation
 With SVM methods we get an accuracy of $74.00\%$ with a standard deviation of $0.045$. To a marginal detriment of consistency against MLP methods, this makes it the most accurate model. It is also the only model to score 100\% for a single emotion "happy". However, along with MLP methods, it misclassifies fear for surprise quite often (figure \ref{fig:pca-svm}).
 
 % this part belongs somewhere else, could be quantified a bit more, like actually measuring distances from emotions.
-By inspecting which emotions are most misclassified as others across all PCA figures for each classifier we can intuitively create a emotional spectrum (figure \ref{fig:spectrum}.
+By inspecting which emotions are most misclassified as others across all PCA figures for each classifier we can intuitively create an emotional spectrum (figure \ref{fig:spectrum}).
 
-\begin{figure} \label{fig:spectrum}
+\begin{figure}
 \centering
 \begin{tikzpicture}[]
 \filldraw
@@ -68,5 +61,6 @@ By inspecting which emotions are most misclassified as others across all PCA fig
 (8,0)  circle (2pt) node[align=center, below] {Surprise} --
 (10,0) circle (2pt) node[align=right,  below] {Happy};
 \end{tikzpicture}
-\caption{A spectrum of emotions.}
+\caption{A spectrum of emotions inferred from confusion matrices.}
+\label{fig:spectrum}
 \end{figure}
