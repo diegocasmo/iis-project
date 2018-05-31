@@ -205,3 +205,9 @@ $RECYCLE.BIN/
 
 # Ignore output files
 code/**/*.json
+
+# Ignore models export
+code/**/*.pkl
+
+#Not ignore model export in integration folder
+!/code/integration/model-name.pkl
