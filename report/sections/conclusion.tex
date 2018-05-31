@@ -1,3 +1,14 @@
 \section{Conclusion}
 
-\todo{TODO: Elaborate on potential ethical concerns we have identified with the emotional responsive agent}
+From a sparse dataset we have created a classifier which uses PCA dimensionality reduction and a SVM to classify landmark points from a depth camera. An admissible accuracy was achieved through trials of trying different preprocessing methods, dimensionality reduction, and classifier models. Through collaboration with the CV group and the ES group, a pipeline was created which uses our best models to interpret a series of facial landmarks from a depth camera and feeds probabilities of emotions to a digital agent. A video of the abstracted solution is available \href{https://youtu.be/Owlukfpjqqk}{\textcolor{blue}{on YouTube}}.
+
+\subsection{Ethical Concerns}
+We need to look no further than science fiction for reasons for pause about fully developing emotional systems. The 2012 film "Prometheus", features an android named David who's ulterior motives and ability to lie kill the vast majority of the human characters. On the opposite end of this spectrum, the 2013 film "Her" features a fully developed relationship between a human and a non-corporeal, artificial, digital assistant: Samantha. The primary difference between David and Samantha is a matter of physicality, and by extension, real-world autonomy. No matter how much processing power Samantha has, she cannot lift a pebble on her own. Despite this, both characters' capability to manipulate and evoke a spectrum of emotions --from anger to love-- is equal. Feelings are real and we should be careful in developing artificial systems which have the power to manipulate them (not yet to mention the manipulating the real world).
+
+In regards to our project, it is not out of the realm of imagination that, in a zero-sum scenario, our pipeline could be used to exploit human actors involved in the situation. By analyzing the emotion on an actors face, with a simple "scheming" module, our pipeline could deliver an expression that could trick or deceive the human. We must not make any mistake here, the machine does not feel "happy." Last winter, an AI avatar came under fire for joking about destroying humanity. In response to criticism the creator had this to say:
+
+\begin{quote}
+"Many of the comments would be good fun if they didn’t reveal the fact that many people are being deceived into thinking that this (mechanically sophisticated) animatronic puppet is intelligent. It’s not. It has no feeling, no opinions, and zero understanding of what it says. It’s not hurt. It’s a puppet." \cite{sofia}
+\end{quote}
+
+Though the Muppets are puppets too, their nature is more observable, the puppet master is often nearby and we can see his or her lips moving subtly. They are transparently built and controlled for the purpose of entertainment. Concerning emotional machines, until we can reasonably establish a framework for whether a being has emotions it can reason about, we must keep the above warning in mind.
