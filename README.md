@@ -14,3 +14,6 @@
 ## Experiments
   - Instructions for the 2D landmark files analysis and classification are in [/code/lm2-analysis](/code/lm2-analysis)
   - Instructions for the 3D landmark files analysis and classification are in [/code/lm3-analysis](/code/lm3-analysis)
+
+## Final Pipeline
+  - Demonstration of our work for the final pipeline is in [predict_emotions.ipynb](https://github.com/diegocasmo/iis-project/blob/master/code/integration/predict_emotion.ipynb) notebook. For more information see [README.md](https://github.com/diegocasmo/iis-project/blob/master/code/integration/README.md) in `integration` folder.
