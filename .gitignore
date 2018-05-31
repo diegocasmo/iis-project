@@ -205,6 +205,3 @@ $RECYCLE.BIN/
 
 # Ignore output files
 code/**/*.json
-
-# Ignore models export
-code/**/*.pkl
