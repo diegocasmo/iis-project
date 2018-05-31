@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.4
 # -*- coding: utf-8 -*-
 
-from constants import get_all_emotions, get_all_landmarks
+from constants import get_all_emotions, get_all_features
 from itertools import islice
 import glob
 import csv
@@ -9,7 +9,7 @@ import csv
 def get_lm3_features(file_path):
   fi = open(file_path, 'r')
   save_to = None
-  lm = get_all_landmarks()
+  lm = get_all_features()
   features = dict(zip(lm, ['NaN'] * len(lm)))
   # every other line has points with the feature label
   for line in fi:
@@ -29,7 +29,7 @@ def get_lm3_files_paths():
   Return all file paths of lm3 files in the data directory
   '''
   file_paths = []
-  data_dir = r'data/bosphorusDB/__files__/__others__/BosphorusDB_p1/**/*.lm3'
+  data_dir = r'data/bosphorusDB/__files__/__others__/**/*.lm3'
   for file_path in glob.glob(data_dir):
     # Only read lm3 files which are related to emotions
     for x in get_all_emotions():
@@ -39,7 +39,7 @@ def get_lm3_files_paths():
 
 def features_to_list(file_name, feature_dict):
   out = [get_lm3_label(file_name)]
-  lm = get_all_landmarks();
+  lm = get_all_features();
   for m in lm:
     if feature_dict[m] != 'NaN':
       out.append(feature_dict[m][0])
@@ -58,7 +58,7 @@ def create_csv(features):
   '''
   # Create x,y and z coordinate names for each landmark
   headers = ['Label']
-  for landmark in get_all_landmarks():
+  for landmark in get_all_features():
     headers.append(landmark + '-x')
     headers.append(landmark + '-y')
     headers.append(landmark + '-z')
