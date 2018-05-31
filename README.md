@@ -9,8 +9,8 @@
   - See [data instructions](/data/README.md)
 
 ## Results
-  - Best results are summarized in the [dataset-analysis-and-classification.ipynb](/code/dataset-analysis-and-classification.ipynb)
+  - Best results are summarized in the [/code/dataset-analysis-and-classification.ipynb](/code/dataset-analysis-and-classification.ipynb) notebook
 
 ## Experiments
-  - Instructions for the 2D landmark files analysis and classification are in [/code/lm2-analysis/README.md](/code/lm2-analysis/README.md)
-  - Instructions for the 3D landmark files analysis and classification are in [/code/lm3-analysis/README.md](/code/lm3-analysis/README.md)
+  - Instructions for the 2D landmark files analysis and classification are in [/code/lm2-analysis](/code/lm2-analysis)
+  - Instructions for the 3D landmark files analysis and classification are in [/code/lm3-analysis](/code/lm3-analysis)
