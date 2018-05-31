@@ -210,4 +210,5 @@ code/**/*.json
 code/**/*.pkl
 
 #Not ignore model export in integration folder
-!/code/integration/model-name.pkl
+!/code/integration/pca-model.pkl
+!/code/integration/svm-model.pkl
