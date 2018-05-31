@@ -1,15 +1,16 @@
-# IIS Project
+# Analysis and Classification of Emotions In The Bosphorus Database
 
-## Installation
+## Environment
   - [Install Anaconda ](https://www.continuum.io/downloads)
   - Run ``conda env create -f environment.yml`` to install dependencies
   - Run ``source activate iis`` to activate environment
 
-### Running ``lm2`` Features Analysis
-  - Unzip dataset in the ``./data`` directory
-    - Make sure all subdirectories are also unzipped
-    - Do not change any of the original file names nor original directory structure
-  - From the root directory, run ``python code/lm2-analysis/lm2_parser.py`` to create the ``./data/lm2.csv`` file
-  - Once the conda environment has been activated, run ``jupyter notebook`` in your terminal
-  - Open browser at http://localhost:8888/?token=<your_token>
-  - Navigate to the ``code/lm2-analysis/solution.ipynb`` file
+## Data
+  - See [data instructions](/data/)
+
+## Results
+  - Best results are summarized in the [/code/dataset-analysis-and-classification.ipynb](/code/dataset-analysis-and-classification.ipynb) notebook
+
+## Experiments
+  - Instructions for the 2D landmark files analysis and classification are in [/code/lm2-analysis](/code/lm2-analysis)
+  - Instructions for the 3D landmark files analysis and classification are in [/code/lm3-analysis](/code/lm3-analysis)

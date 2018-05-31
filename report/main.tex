@@ -4,15 +4,18 @@
 \usepackage[english]{babel}
 
 \usepackage[numbers]{natbib}
+\usepackage[titletoc,toc,title]{appendix}
 \usepackage{amsmath}
-\usepackage{numprint}
-\usepackage{graphicx}
-\usepackage{titlesec}
 \usepackage{float}
+\usepackage{graphicx}
 \usepackage{listings}
-\usepackage{xspace}
+\usepackage{numprint}
+\usepackage{subcaption}
+\usepackage{tikz} \usetikzlibrary{trees, positioning, arrows.meta}
+\usepackage{titlesec}
 \usepackage{url}
 \usepackage{xcolor}
+\usepackage{xspace}
 \newcommand\todo[1]{\textcolor{blue}{#1}}
 \lstset{% parameters for all code listings
   language=Python,
@@ -29,7 +32,7 @@
 \counterwithin{equation}{section}
 
 % Custom macro for including images, \mfigure{img-name}{caption}
-\newcommand{\mfigure}[2]{
+\newcommand{\jpgfigure}[2]{
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{figures/#1.jpg}
@@ -37,6 +40,18 @@
     \label{fig:#1}
 \end{figure}
 }
+
+\newcommand{\pngfigure}[2]{
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=0.30\textheight,keepaspectratio]{figures/#1.png}
+    \caption{#2}
+    \label{fig:#1}
+\end{figure}
+}
+
+\newcommand{\tsne}{t-SNE\xspace}
+\newcommand{\knn}{kNN\xspace}
 
 \title{Intelligent Interactive Systems \\ Project Report by Group 12}
 \author{Diego Castillo \and Ankur Shukla \and Tristan Wright }
@@ -52,6 +67,10 @@
 \input{sections/results.tex}
 \input{sections/secondary-groups.tex}
 \input{sections/conclusion.tex}
+
+\begin{appendix}
+\input{sections/proposal.tex}
+\end{appendix}
 
 \bibliographystyle{plainnat}
 \bibliography{references}

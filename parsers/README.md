@@ -1,6 +1,6 @@
 # The Bosphorus Database Parsers
 
-The original dataset inputs need to be parsed to create the ``.csv`` files which are used in the [./code](./code) section to do the feature analysis and classification tasks.
+The original dataset samples need to be parsed to create the ``.csv`` files which are used in the [/code](../code) section to do the feature analysis and classification tasks.
 
 ## Instructions
   - Unzip dataset in the ``./data`` directory

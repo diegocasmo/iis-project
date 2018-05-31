@@ -202,5 +202,13 @@ $RECYCLE.BIN/
 # Ignore dataset compressed and uncompressed files
 /data/*
 !/data/README.md
-!/data/lm2.csv
-!/data/lm3.csv
+
+# Ignore output files
+code/**/*.json
+
+# Ignore models export
+code/**/*.pkl
+
+#Not ignore model export in integration folder
+!/code/integration/pca-model.pkl
+!/code/integration/svm-model.pkl
