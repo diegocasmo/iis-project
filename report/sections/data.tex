@@ -2,12 +2,12 @@
 
 % Introduction to the dataset
 % What are facial landmarks?
-Facial landmarks are key points which allow to perform tasks such as emotion classification. These facial landmarks (features) --for example the location of the outer left eye brow-- are provided in the Bosphorus Database dataset in three different types of files. Files with an `.lm2' extension have 2D feature coordinates, `.lm3' have 3D feature coordinates, and finally the `.bnt' files have both 2D coordinates and corresponding 3D image coordinates, each labeled with the corresponding emotion it represents.
+Facial landmarks are key points which allow to perform tasks such as emotion classification. These facial landmarks (features) --for example the location of the outer left eye brow-- are provided in the dataset in three different types of files. Files with an `.lm2' extension have 2D feature coordinates, `.lm3' have 3D feature coordinates, and finally the `.bnt' files have both 2D coordinates and corresponding 3D image coordinates, each labeled with the corresponding emotion it represents.
 
 % How many samples?
 % How many labels?
 % Distribution of labels in dataset
-There are a total of 453 samples, each with an `.lm2', `.lm3', and `.bnt' file. A single file corresponds to one out of the six possible emotions (\textit{anger}, \textit{disgust}, \textit{fear}, \textit{happy}, \textit{sadness}, and \textit{surprise}). Of these 453 samples, 71 correspond to `anger', 69 to `disgust', 70 to `fear', 106 to `happy', 66 to `sadness', and 71 to `surprise'. Since some labels have more samples than others, the dataset suffers from class imbalance. Class imbalance is a phenomenon that usually results in models which tend to focus on the classification of the samples which are overrepresented while ignoring --or misclassifying-- the underrepresented samples \cite{data-mining-intro}. Section \ref{impl} explains how this issue was addressed.
+There are a total of 453 samples, each with an `.lm2', `.lm3', and `.bnt' file. A single file corresponds to one out of the six possible emotions. Of these 453 samples, 71 correspond to `anger', 69 to `disgust', 70 to `fear', 106 to `happy', 66 to `sadness', and 71 to `surprise'. Since some labels have more samples than others, the dataset suffers from class imbalance. Class imbalance is a phenomenon that usually results in models which tend to focus on the classification of the samples which are overrepresented while ignoring --or misclassifying-- the underrepresented samples \cite{data-mining-intro}. Section \ref{impl} explains how this issue was addressed.
 
 For each possible file extension a parser was created to extract the features for the emotion classification task. The parsers find all files with a particular extension and create a `.csv' file which consists of all the samples with their corresponding label, and all features associated with each sample.
 
