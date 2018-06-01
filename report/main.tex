@@ -54,9 +54,13 @@
 \newcommand{\tsne}{t-SNE\xspace}
 \newcommand{\knn}{kNN\xspace}
 
+\usepackage[T1]{fontenc}
+\usepackage{titling}
+\setlength{\droptitle}{-7em}   % This is your set screw
+
 \title{Intelligent Interactive Systems \\ Project Report by Group 12}
-\author{Diego Castillo \and Ankur Shukla \and Tristan Wright }
-\date{\today}
+\author{Diego Castillo \and Ankur Shukla \and Tristan Wright}
+\date{\today\vspace{-0.5cm}}
 
 \begin{document}
 
@@ -69,10 +73,11 @@
 \input{sections/secondary-groups.tex}
 \input{sections/conclusion.tex}
 
-\begin{appendix}
-\input{sections/proposal.tex}
-\end{appendix}
-
 \bibliographystyle{plainnat}
 \bibliography{references}
+
+\begin{appendices}
+\input{sections/proposal.tex}
+\end{appendices}
+
 \end{document}
